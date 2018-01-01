@@ -1,3 +1,11 @@
+<script type="text/javascript"async
+ src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+
+$$
+\theta_i = \theta_i - \alpha\frac\partial{\partial\theta_i}J(\theta)
+$$
 # 摘要
 > 优化算法指通过改善训练方式，来最小化(或最大化)损失函数E(x)
 ---
@@ -25,14 +33,18 @@
 > 指数加权平均
 
 - 动量梯度下降Momentum
+
 - AdaGrad
+> 学习率 η 会随着每次迭代而根据历史梯度的变化而变化。
+
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
 
 - Rprop
 - RMSprop
 - Adam
 - 学习率衰减
 
-# 二阶
+# 二阶优化
 > 使用了二阶导数(也叫做Hessian方法)来最小化或最大化损失函数。由于二阶导数的计算成本很高，所以这种方法并没有广泛使用。
 如果估计不好一阶导数，那么对二阶导数的估计会有更大的误差，这对于这些算法来说是致命的。对于二阶优化算法，减小batch换来的收敛速度提升远不如引入大量噪声导致的性能下降。在使用二阶优化算法时，往往要采用大batch
 ## 牛顿法
