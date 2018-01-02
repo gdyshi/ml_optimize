@@ -9,27 +9,20 @@ import tensorflow as tf
 import numpy as np
 
 FLAGS = None
-BATCH_SGD = 1  # 随机梯度下降
-BATCH_SGD = 1  # 批量梯度下降
 BATCH_MINI = 50  # mini-batch
 
 LR_MOMENTUM = 'monentum'
+LR_NAG = 'monentum'
+LR_ADAGRAD = 'monentum'
 LR_RMSPROP = 'RMSprop'
 LR_ADAM = 'Adam'
+LR_ADADELTA = 'monentum'
+
+LR_DECAY_LINER = 'LINER' # 线性下降
+LR_DECAY_LINER = 'LINER' # 指数下降
 
 
-
-# layers = [784, 577, 384, 256, 171, 114, 76, 51, 34, 23, 15, 10] # batch norm
-# layers = [784, 320, 160, 80, 40, 20, 10]
-layers = [784, 390, 156, 62, 25, 10]
-# layers = [784, 270, 90, 30, 10]
-# layers = [784, 90, 10]
-
-# 初始化方法选择
-INIT_METHORD = INIT_METHORD_XAVIER
-
-# 批量归一化
-BATCH_NORM = False
+layers = [784, 270, 90, 30, 10]
 
 # 激活函数选择
 ACTIVATION_FUNCTION = ACTIVATION_FUNCTION_TANH
@@ -43,11 +36,6 @@ def main(_):
     x = tf.placeholder(tf.float32, [None, 784])
     for i in range(0, len(layers) - 1):
         X = x if i == 0 else y
-
-        # 放这里有神奇的现象
-        # if BATCH_NORM:
-        #     X = tf.contrib.layers.batch_norm(X, center=True, scale=True,
-        #                                       is_training=True)
 
         node_in = layers[i]
         node_out = layers[i + 1]
