@@ -101,3 +101,4 @@
 - [Deep Learning 之 最优化方法](http://blog.csdn.net/BVL10101111/article/details/72614711)
 - [卷积神经网络中的优化算法比较](http://shuokay.com/2016/06/11/optimization/)
 - [教程 | 听说你了解深度学习最常用的学习算法：Adam优化算法？](http://www.sohu.com/a/156495506_465975)
+- [[Math] 常见的几种最优化方法](https://www.cnblogs.com/maybe2030/p/4751804.html)
