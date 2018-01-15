@@ -59,14 +59,13 @@ def main(_):
     # Define loss and optimizer
     y_ = tf.placeholder(tf.float32, [None, 10])
     loss = tf.reduce_mean(tf.norm(y_ - y, axis=1) ** 2) / 2
-
     global_step = tf.Variable(0, trainable=False)
     if OPTIMIZE_METHORD == LR_DECAY_EXP:
         # decayed_learning_rate = learning_rate * decay_rate ^ (global_step / decay_steps)
         decayed_learning_rate = tf.train.exponential_decay(learning_rate, global_step, 1000, 0.96, staircase=True)
     elif OPTIMIZE_METHORD == LR_DECAY_NATURAL_EXP:
         # decayed_learning_rate = learning_rate * exp(-decay_rate * global_step)
-        decayed_learning_rate = tf.train.inverse_time_decay(learning_rate, global_step, 1000, 0.96, staircase=True)
+        decayed_learning_rate = tf.train.natural_exp_decay(learning_rate, global_step, 1000, 0.96, staircase=True)
     elif OPTIMIZE_METHORD == LR_DECAY_LINER:
         # decayed_learning_rate = learning_rate / (1 + decay_rate * t)
         decayed_learning_rate = tf.train.inverse_time_decay(learning_rate, global_step, 1000, 0.96, staircase=True)
@@ -94,6 +93,7 @@ def main(_):
         train_step = tf.train.AdadeltaOptimizer(decayed_learning_rate).minimize(loss, global_step=global_step)
     else:
         train_step = tf.train.GradientDescentOptimizer(decayed_learning_rate).minimize(loss, global_step=global_step)
+
 
     acc = accuracy(y, y_)
 
