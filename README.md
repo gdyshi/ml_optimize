@@ -3,7 +3,7 @@
 ---
 # 局部最优问题
 > 局部最优与鞍点。在神经网络中，最小化非凸误差函数的另一个关键挑战是避免陷于多个其他局部最小值中。实际上，问题并非源于局部极小值，而是来自鞍点，即一个维度向上倾斜且另一维度向下倾斜的点。这些鞍点通常被相同误差值的平面所包围，这使得SGD算法很难脱离出来，因为梯度在所有维度上接近于零。
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/20160909001936276.gif)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/20160909001936276.gif)
 
 # batch优化
 > 很难选择出合适的学习率。太小的学习率会导致网络收敛过于缓慢，而学习率太大可能会影响收敛，并导致损失函数在最小值上波动，甚至出现梯度发散。
@@ -35,27 +35,27 @@
 指数衰减。例如：每过5个epochs将学习率乘以0.1 
 > 指数加权平均
 
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101204317.png)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101204317.png)
 > 带修正的指数加权平均
 
-![修正公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101205314.png)
+![修正公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101205314.png)
 
 - 动量梯度下降Momentum
 > 给学习率增加了惯性
 
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/20170521223752521.png)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/20170521223752521.png)
 
-![算法](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/20170521224015304.png)
+![算法](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/20170521224015304.png)
 
 - NAG(Nesterov Momentum)
 > Momentum由前面下降方向的一个累积和当前点的梯度方向组合而成.先按照历史梯度往前走那么一小步，按照前面一小步位置的“超前梯度”来做梯度合并
 
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101211507.png)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101211507.png)
 - AdaGrad
 > 学习率 η 会随着每次迭代而根据历史梯度的变化而变化。
 > 将每一个参数的每一次迭代的梯度取平方累加再开方，用基础学习率除以这个数，来做学习率的动态更新
 
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101212512.png)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101212512.png)
 >其学习率是单调递减的，训练后期学习率非常小
 其需要手工设置一个全局的初始学习率
 学习率的调整太激进, 因此常常过早结束了学习过程.
@@ -64,7 +64,7 @@
 - RMSprop
 > 目前并没有发表, 基于权重梯度最近量级的均值为每一个参数适应性地保留学习率
 
-![公式](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101214206.png)
+![公式](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101214206.png)
 - Adam
 > 结合momentum和RMSprop
 
@@ -75,12 +75,12 @@
 ## 拟牛顿法
 > 牛顿法有个缺点，海森矩阵是非稀疏矩阵，参数太多，其计算量太大。
 
-![优化算法效果对比图](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101212904.png)
+![优化算法效果对比图](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101212904.png)
 - AdaDelta
 > 通过设置窗口 w, 只使用部分时间的梯度累积.
 
-![优化算法效果对比图](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101212816.png)
-![优化算法效果对比图](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/搜狗截图20180101214020.png)
+![优化算法效果对比图](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101212816.png)
+![优化算法效果对比图](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/搜狗截图20180101214020.png)
 - Hessian
 ## 其它
 - 共轭梯度法
@@ -91,7 +91,7 @@
 # 总结
 > [文章](doc\1705.08292.pdf)则是通过对比给出如下结论：自适应优化算法通常都会得到比SGD算法性能更差（经常是差很多）的结果，尽管自适应优化算法在训练时会表现的比较好，因此使用者在使用自适应优化算法时需要慎重考虑！
 
-![优化算法效果对比图](https://github.com/gdyshi/ml_optimize/blob/master/md_pic/20170605150229100.png)
+![优化算法效果对比图](https://raw.githubusercontent.com/gdyshi/ml_optimize/master/md_pic/20170605150229100.png)
 
 > 推荐使用Adam方法. Adam 算法通常会比 RMSProp 算法效果好. 另外,也可以尝试 SGD+Nesterov Momentum
 ---
